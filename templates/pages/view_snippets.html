@@ -1,0 +1,64 @@
+<!doctype html>
+{% extends "inc/base.html" %}
+{% load static %}
+{% block header %} Список сниппетов {% endblock header %}
+{% block content %}
+
+<html lang="ru" class="h-100">
+
+
+
+<body class="d-flex flex-column h-100">
+
+
+
+<!-- Begin page content -->
+<main role="main" class="mt-3 flex-shrink-0">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1>{{ pagename }}</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p>На данной страницы будут отображаться все созданные сниппеты.</p>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Дата создания</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for Snippet in snippets %}
+                    <tr>
+                        <td scope="row">{{ Snippet.id }}</td>
+                        <td><a href="/snippet/{{ Snippet.id }}">{{ Snippet.name }}</a></td>
+                        <td>{{ Snippet.creation_date }}</td>
+                    </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div align="right">
+                    <i style="color: gray;">Всего сниппетов: {{count}}</i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+</body>
+{% endblock %}
+</html>

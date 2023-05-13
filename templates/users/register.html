@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "inc/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block header %} Регистрация {% endblock header %}
+{% block content %}
+    <form method = "POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"> Добро пожаловать в PythonBin </legend>
+            {{form|crispy}}
+        </fieldset>
+        <div class = "form-group">
+            <button class="btn btn-outline-info" type="submit">Зарегистрироваться</button>
+        </div>
+    </form>
+<div class="border-top pt-3">
+    Уже есть аккаунт? <a class="ml-2" href="{% url 'log_in' %}"> Вход </a>
+</div>
+
+{% endblock content %}
